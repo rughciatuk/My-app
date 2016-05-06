@@ -1,0 +1,1 @@
+04-22 14:44:19.268: V/Test(3710): http://api.openweathermap.org/data/2.5/forecast/daily?id=294071&mode=json&units=metric&cnt=7&APPID=5e4790a7810243336de32ed9e48493c3
