@@ -217,38 +217,20 @@ public class ForecastFragment extends Fragment {
             // so that they can be closed in the finally block.
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
-            String mID = para[0];
-            String mUnits = para[1];
+
 
             // Will contain the raw JSON response as a string.
             String forecastJsonStr = null;
-
-
-            String format = "json";
-            String units = "metric";
             int numDays = 7;
-            String appid = "5e4790a7810243336de32ed9e48493c3";
+            String mID = para[0];
+            String mUnits = para[1];
 
 
             try {
-                // Construct the URL for the OpenWeatherMap query
-                // Possible parameters are available at OWM's forecast API page, at
-                // http://openweathermap.org/API#forecast
-                final String FORECAST_BASE_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?";
-                final String ID_PARAM = "id";
-                final String FORMAT_PARAM = "mode";
-                final String UNITS_PARAM = "units";
-                final String DAYS_PARAM = "cnt";
-                final String APPID_PARAM = "APPID";
 
 
-                Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
-                        .appendQueryParameter(ID_PARAM, mID)
-                        .appendQueryParameter(FORMAT_PARAM, format)
-                        .appendQueryParameter(UNITS_PARAM, units)
-                        .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
-                        .appendQueryParameter(APPID_PARAM,appid).build();
-
+                Uri builtUri = ForcastHelperClass.uriBuilderOpenWeatherMap(mID,numDays);
+                Log.e("Test", builtUri.toString());
 
 
                 URL url = new URL(builtUri.toString());

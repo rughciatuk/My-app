@@ -356,7 +356,7 @@ int id action_menu_presenter 0x7f0e0003
 int id action_mode_bar 0x7f0e002e
 int id action_mode_bar_stub 0x7f0e002d
 int id action_mode_close_button 0x7f0e0020
-int id action_refresh 0x7f0e0044
+int id action_refresh 0x7f0e0045
 int id action_settings 0x7f0e0043
 int id activity_chooser_view_content 0x7f0e0021
 int id always 0x7f0e0016
@@ -382,6 +382,7 @@ int id listMode 0x7f0e0009
 int id list_item 0x7f0e0025
 int id list_item_forecast_textview 0x7f0e0042
 int id listview_forecast 0x7f0e0041
+int id menu_item_share 0x7f0e0044
 int id middle 0x7f0e0015
 int id never 0x7f0e0019
 int id none 0x7f0e000e

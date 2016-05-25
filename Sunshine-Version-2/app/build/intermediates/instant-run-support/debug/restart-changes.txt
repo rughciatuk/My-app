@@ -1,2 +1,0 @@
-CHANGED,C:\Users\Roi\Documents\Test\Sunshine-Version-2\app\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\example\android\sunshine\app\SettingsActivity$1.class
-CHANGED,C:\Users\Roi\Documents\Test\Sunshine-Version-2\app\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\example\android\sunshine\app\SettingsActivity.class

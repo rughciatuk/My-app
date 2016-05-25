@@ -1,0 +1,2 @@
+CHANGED,C:\Users\Roi\Documents\GitHub\My-app\Sunshine-Version-2\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\android\sunshine\app\DetailActivity$override.class
+CHANGED,C:\Users\Roi\Documents\GitHub\My-app\Sunshine-Version-2\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class

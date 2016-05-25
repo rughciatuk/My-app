@@ -19,7 +19,9 @@ package com.example.android.sunshine.app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +30,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class DetailActivity extends ActionBarActivity {
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,24 @@ public class DetailActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.detail, menu);
+
+        Intent myIntent = this.getIntent();
+        String forcast = myIntent.getStringExtra(Intent.EXTRA_TEXT);
+        String toShare = forcast + " #Sunshine";
+
+        MenuItem shareItem = menu.findItem(R.id.menu_item_share);
+        ShareActionProvider mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
+
+        Intent myShareIntent = new Intent(Intent.ACTION_SEND);
+        myShareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+        myShareIntent.setType("text/plain");
+        myShareIntent.putExtra(Intent.EXTRA_TEXT,toShare);
+
+        mShareActionProvider.setShareIntent(myShareIntent);
+
+
+
+
         return true;
     }
 
@@ -59,7 +82,11 @@ public class DetailActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             Intent openSetting = new Intent(getApplicationContext(),SettingsActivity.class);
             startActivity(openSetting);
+        }else if(id == R.id.menu_item_share){
+
+
         }
+
 
         return super.onOptionsItemSelected(item);
     }

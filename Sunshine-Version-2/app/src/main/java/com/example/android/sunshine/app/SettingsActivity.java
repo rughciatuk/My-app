@@ -1,6 +1,7 @@
 package com.example.android.sunshine.app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -18,27 +19,35 @@ import android.util.Log;
  */
 public class SettingsActivity extends PreferenceActivity
         implements Preference.OnPreferenceChangeListener {
+    private SharedPreferences my;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Add 'general' preferences, defined in the XML file
         addPreferencesFromResource(R.xml.pref_general);
+        my = PreferenceManager.getDefaultSharedPreferences(this);
 
         // For all preferences, attach an OnPreferenceChangeListener so the UI summary can be
         // updated when the preference changes.
         bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_location_key)));
         bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_units_key)));
-        Preference viewLoction = (Preference) findPreference(getString(R.string.pref_view_location_key));
-        viewLoction.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        final Preference viewLocation = (Preference) findPreference(getString(R.string.pref_view_location_key));
+        viewLocation.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 Log.e("OnClick","Working");
-                Intent viewLoctionIntent = new Intent(Intent.ACTION_VIEW);
-//                viewLoctionIntent.setData();
-                if(viewLoctionIntent.resolveActivity(getPackageManager()) != null){
-                    startActivity(viewLoctionIntent);
+                Intent viewLocationIntent = new Intent(Intent.ACTION_VIEW);
+
+                String location = my.getString(getString(R.string.pref_location_key), getString(R.string.pref_location_default));
+
+                Log.e("Just Another Test", ForcastHelperClass.uriLocationBuilder(location).toString());
+
+
+                viewLocationIntent.setData(ForcastHelperClass.uriLocationBuilder(location));
+                if(viewLocationIntent.resolveActivity(getPackageManager()) != null){
+                    startActivity(viewLocationIntent);
                 }
                 return false;
 
